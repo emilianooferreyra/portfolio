@@ -31,6 +31,15 @@ const nav = [
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Anti-FOUC: set theme before paint -->
+    <script is:inline>
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
     <!-- SEO -->
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -48,12 +57,12 @@ const nav = [
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
   </head>
-  <body class="min-h-screen bg-white text-black font-mono pb-12">
-    <nav class="max-w-4xl mx-auto px-6 py-6 flex justify-between items-center border-b border-black">
+  <body class="min-h-screen bg-white dark:bg-zinc-950 text-black dark:text-white font-mono pb-12 transition-colors duration-200">
+    <nav class="max-w-4xl mx-auto px-6 py-6 flex justify-between items-center border-b border-black dark:border-white">
       <a href="/" aria-label="Home">
-        <img src="/favicon.svg" alt="EF" width="32" height="32" />
+        <img src="/favicon.svg" alt="EF" width="32" height="32" class="dark:invert" />
       </a>
-      <ul class="flex gap-6 text-sm">
+      <ul class="flex items-center gap-6 text-sm">
         {nav.map(({ href, label }) => {
           const isActive = href === '/'
             ? currentPath === '/'
@@ -66,15 +75,50 @@ const nav = [
             </li>
           );
         })}
+        <li>
+          <button
+            id="theme-toggle"
+            class="flex items-center opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
+            aria-label="Toggle dark mode"
+          >
+            <!-- Moon: visible in light mode -->
+            <span class="dark:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 10.5A6 6 0 0 1 5.5 2a6.5 6.5 0 1 0 8.5 8.5z"/>
+              </svg>
+            </span>
+            <!-- Sun: visible in dark mode -->
+            <span class="hidden dark:inline-flex">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="8" cy="8" r="3"/>
+                <line x1="8" y1="1" x2="8" y2="2.5"/>
+                <line x1="8" y1="13.5" x2="8" y2="15"/>
+                <line x1="1" y1="8" x2="2.5" y2="8"/>
+                <line x1="13.5" y1="8" x2="15" y2="8"/>
+                <line x1="2.93" y1="2.93" x2="4.05" y2="4.05"/>
+                <line x1="11.95" y1="11.95" x2="13.07" y2="13.07"/>
+                <line x1="13.07" y1="2.93" x2="11.95" y2="4.05"/>
+                <line x1="4.05" y1="11.95" x2="2.93" y2="13.07"/>
+              </svg>
+            </span>
+          </button>
+        </li>
       </ul>
     </nav>
 
     <slot />
 
-    <footer class="fixed bottom-0 left-0 right-0 bg-white py-4 text-xs text-gray-500">
-      <div class="max-w-4xl mx-auto px-6 border-t border-black pt-4">
+    <footer class="fixed bottom-0 left-0 right-0 bg-white dark:bg-zinc-950 py-4 text-xs text-gray-500 dark:text-gray-500">
+      <div class="max-w-4xl mx-auto px-6 border-t border-black dark:border-white pt-4">
         <p>&copy; {new Date().getFullYear()} Emiliano Ferreyra.</p>
       </div>
     </footer>
+
+    <script>
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    </script>
   </body>
 </html>

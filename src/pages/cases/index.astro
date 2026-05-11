@@ -14,20 +14,20 @@ const cases = await getCollection('cases');
     ) : (
       <div class="space-y-10">
         {cases.map((c) => (
-          <article class="border-l-2 border-gray-300 pl-6">
+          <article class="border-l-2 border-gray-300 dark:border-zinc-700 pl-6">
             <a href={`/cases/${c.id}`} class="group block space-y-1">
               <div class="flex justify-between items-start gap-4">
                 <div>
                   <h2 class="text-xl font-bold group-hover:underline">{c.data.title}</h2>
-                  <p class="text-sm text-gray-600">{c.data.subtitle}</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{c.data.subtitle}</p>
                 </div>
                 <span class="text-xs text-gray-500 font-bold shrink-0">{c.data.year}</span>
               </div>
-              <p class="text-sm text-gray-700 leading-relaxed pt-1">{c.data.description}</p>
+              <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed pt-1">{c.data.description}</p>
             </a>
             <div class="flex flex-wrap gap-2 mt-3">
               {c.data.tech.map((tech) => (
-                <span class="text-xs px-2 py-0.5 bg-gray-100 border border-gray-300">{tech}</span>
+                <span class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700">{tech}</span>
               ))}
             </div>
           </article>

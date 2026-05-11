@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Contact" description="Get in touch for freelance work, collaborations, or remote roles.">
   <main class="max-w-4xl mx-auto px-6 py-16">
     <h1 class="text-3xl font-bold mb-4">/ Contact</h1>
-    <p class="text-sm text-gray-600 mb-12 max-w-lg leading-relaxed">
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-12 max-w-lg leading-relaxed">
       Available for freelance projects, remote roles, and interesting collaborations.
       Based in Buenos Aires (UTC-3).
     </p>
@@ -22,7 +22,7 @@ import Layout from '../layouts/Layout.astro';
           type="text"
           name="name"
           required
-          class="w-full border border-black px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:ring-1 focus:ring-black"
+          class="w-full border border-black dark:border-white px-3 py-2 text-sm font-mono bg-white dark:bg-zinc-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white"
           placeholder="Your name"
         />
       </div>
@@ -34,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
           type="email"
           name="email"
           required
-          class="w-full border border-black px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:ring-1 focus:ring-black"
+          class="w-full border border-black dark:border-white px-3 py-2 text-sm font-mono bg-white dark:bg-zinc-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white"
           placeholder="you@example.com"
         />
       </div>
@@ -55,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
 
       <button
         type="submit"
-        class="border border-black px-6 py-2 text-sm font-bold hover:bg-black hover:text-white transition-colors"
+        class="border border-black dark:border-white px-6 py-2 text-sm font-bold hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
       >
         Send →
       </button>

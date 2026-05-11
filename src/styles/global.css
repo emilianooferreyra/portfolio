@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
   article h1 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1rem; }
   article h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
@@ -19,4 +21,15 @@
   article th { text-align: left; padding: 0.5rem 1rem 0.5rem 0; font-weight: 700; color: #111; }
   article td { padding: 0.625rem 1rem 0.625rem 0; color: #374151; border-bottom: 1px solid #e5e7eb; }
   article tr:last-child td { border-bottom: none; }
+
+  .dark article p,
+  .dark article ul,
+  .dark article ol { color: #d1d5db; }
+  .dark article code { background: #1a1a1a; border-color: #3f3f46; }
+  .dark article pre { background: #1a1a1a; border-color: #3f3f46; }
+  .dark article blockquote { border-left-color: #fff; color: #9ca3af; }
+  .dark article hr { border-color: #fff; }
+  .dark article thead { border-bottom-color: #fff; }
+  .dark article th { color: #f9fafb; }
+  .dark article td { color: #d1d5db; border-bottom-color: #3f3f46; }
 }

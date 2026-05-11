@@ -16,17 +16,17 @@ const { Content } = await render(entry);
 
 <Layout title={entry.data.title} description={entry.data.description}>
   <main class="max-w-4xl mx-auto px-6 py-16">
-    <header class="mb-12 border-b border-black pb-8">
+    <header class="mb-12 border-b border-black dark:border-white pb-8">
       <div class="flex justify-between items-start gap-4 mb-2">
         <div>
           <h1 class="text-3xl font-bold">{entry.data.title}</h1>
-          <p class="text-gray-600 mt-1">{entry.data.subtitle}</p>
+          <p class="text-gray-600 dark:text-gray-400 mt-1">{entry.data.subtitle}</p>
         </div>
         <span class="text-xs text-gray-500 font-bold shrink-0">{entry.data.year}</span>
       </div>
       <div class="flex flex-wrap gap-2 mt-4">
         {entry.data.tech.map((tech) => (
-          <span class="text-xs px-2 py-1 bg-gray-100 border border-gray-300">{tech}</span>
+          <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700">{tech}</span>
         ))}
       </div>
       <div class="flex gap-4 mt-4">
@@ -47,7 +47,7 @@ const { Content } = await render(entry);
       <Content />
     </article>
 
-    <div class="mt-16 pt-8 border-t border-black">
+    <div class="mt-16 pt-8 border-t border-black dark:border-white">
       <a href="/cases" class="text-sm font-bold hover:underline">← Back to Cases</a>
     </div>
   </main>
