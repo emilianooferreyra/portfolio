@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout title="Blog" description="Articles about frontend architecture, Go, and building products.">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold mb-12">/ Blog</h1>
+
+    {sorted.length === 0 ? (
+      <p class="text-sm text-gray-500">No posts yet.</p>
+    ) : (
+      <div class="space-y-10">
+        {sorted.map((post) => (
+          <article class="border-l-2 border-gray-300 pl-6">
+            <a href={`/blog/${post.id}`} class="group block space-y-1">
+              <p class="text-xs text-gray-500">
+                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              <h2 class="text-lg font-bold group-hover:underline">{post.data.title}</h2>
+              <p class="text-sm text-gray-600">{post.data.description}</p>
+            </a>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2 mt-3">
+                {post.data.tags.map((tag) => (
+                  <span class="text-xs px-2 py-0.5 bg-gray-100 border border-gray-300">{tag}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    )}
+  </main>
+</Layout>

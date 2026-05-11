@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Emiliano Ferreyra',
+  description = 'Frontend Engineer / Full-Stack Developer based in Buenos Aires.',
+} = Astro.props;
+
+const fullTitle = title === 'Emiliano Ferreyra' ? title : `${title} — Emiliano Ferreyra`;
+const currentPath = Astro.url.pathname;
+const canonicalURL = new URL(Astro.url.pathname, 'https://emilianoferreyra.com');
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/cases', label: 'Cases' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class="min-h-screen bg-white text-black font-mono">
+    <nav class="max-w-4xl mx-auto px-6 py-6 flex justify-between items-center border-b border-black">
+      <a href="/" aria-label="Home">
+        <img src="/favicon.svg" alt="EF" width="32" height="32" />
+      </a>
+      <ul class="flex gap-6 text-sm">
+        {nav.map(({ href, label }) => {
+          const isActive = href === '/'
+            ? currentPath === '/'
+            : currentPath.startsWith(href);
+          return (
+            <li>
+              <a href={href} class={`hover:underline ${isActive ? 'font-bold underline' : ''}`}>
+                {label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+
+    <slot />
+
+    <footer class="max-w-4xl mx-auto px-6 py-8 text-center text-xs text-gray-500 border-t border-black mt-16">
+      <p>&copy; {new Date().getFullYear()} Emiliano Ferreyra.</p>
+    </footer>
+  </body>
+</html>

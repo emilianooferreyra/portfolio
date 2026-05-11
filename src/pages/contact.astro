@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Get in touch for freelance work, collaborations, or remote roles.">
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold mb-4">/ Contact</h1>
+    <p class="text-sm text-gray-600 mb-12 max-w-lg leading-relaxed">
+      Available for freelance projects, remote roles, and interesting collaborations.
+      Based in Buenos Aires (UTC-3).
+    </p>
+
+    <form
+      action="https://formspree.io/f/mykolyje"
+      method="POST"
+      class="space-y-6 max-w-lg"
+    >
+      <div class="space-y-1">
+        <label for="name" class="text-xs font-bold uppercase tracking-wide">Name</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          required
+          class="w-full border border-black px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:ring-1 focus:ring-black"
+          placeholder="Your name"
+        />
+      </div>
+
+      <div class="space-y-1">
+        <label for="email" class="text-xs font-bold uppercase tracking-wide">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          required
+          class="w-full border border-black px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:ring-1 focus:ring-black"
+          placeholder="you@example.com"
+        />
+      </div>
+
+      <div class="space-y-1">
+        <label for="message" class="text-xs font-bold uppercase tracking-wide">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows="6"
+          class="w-full border border-black px-3 py-2 text-sm font-mono bg-white focus:outline-none focus:ring-1 focus:ring-black resize-none"
+          placeholder="Tell me about the project..."
+        ></textarea>
+      </div>
+
+      <input type="hidden" name="_next" value="https://emilianoferreyra.com/contact?sent=true" />
+
+      <button
+        type="submit"
+        class="border border-black px-6 py-2 text-sm font-bold hover:bg-black hover:text-white transition-colors"
+      >
+        Send →
+      </button>
+    </form>
+
+    <div class="mt-16 pt-8 border-t border-black">
+      <p class="text-xs text-gray-500">
+        Or reach me directly at{' '}
+        <a href="mailto:emilianoferreyraa@gmail.com" class="font-bold hover:underline">
+          emilianoferreyraa@gmail.com
+        </a>
+      </p>
+    </div>
+  </main>
+</Layout>
