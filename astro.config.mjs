@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://emilianoferreyra.com',
+  site: 'https://emilianoferreyra.vercel.app',
   vite: {
     plugins: [tailwindcss()]
   },
