@@ -48,7 +48,7 @@ const nav = [
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
   </head>
-  <body class="min-h-screen bg-white text-black font-mono">
+  <body class="min-h-screen bg-white text-black font-mono pb-12">
     <nav class="max-w-4xl mx-auto px-6 py-6 flex justify-between items-center border-b border-black">
       <a href="/" aria-label="Home">
         <img src="/favicon.svg" alt="EF" width="32" height="32" />
@@ -71,8 +71,10 @@ const nav = [
 
     <slot />
 
-    <footer class="max-w-4xl mx-auto px-6 py-8 text-center text-xs text-gray-500 border-t border-black mt-16">
-      <p>&copy; {new Date().getFullYear()} Emiliano Ferreyra.</p>
+    <footer class="fixed bottom-0 left-0 right-0 bg-white py-4 text-xs text-gray-500">
+      <div class="max-w-4xl mx-auto px-6 border-t border-black pt-4">
+        <p>&copy; {new Date().getFullYear()} Emiliano Ferreyra.</p>
+      </div>
     </footer>
   </body>
 </html>

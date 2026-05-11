@@ -35,9 +35,9 @@ export const experience = [
     role: 'Frontend Developer',
     period: 'May 2023 – Jan 2024',
     highlights: [
-      '2x acceleration in delivery cycles',
-      '40% reduction in design-to-production handoff',
-      '60% decrease in QA-reported regressions',
+      'Component library architecture (React, TypeScript, LitElement) enabling 2x faster delivery',
+      'Reduced design-to-production bottleneck by 40% through Figma automation',
+      'Established e2e testing (Cypress) cutting QA regressions by 60%',
     ],
   },
   {
@@ -45,19 +45,19 @@ export const experience = [
     role: 'Frontend Developer',
     period: 'Oct 2019 – Dec 2022',
     highlights: [
-      'Pixel-perfect implementations for global brand campaigns',
-      'Email development expertise (MJML, cross-client compatibility)',
-      'Component system architecture',
+      'Pixel-perfect campaign implementations for global brands using HTML (Handlebars), TypeScript, Sass, GSAP',
+      'Built reusable component system improving render performance and eliminating code duplication',
+      'Email development: transactional and marketing newsletters with MJML, cross-client compatibility via Litmus',
     ],
   },
-    {
+  {
     company: 'Buenos Aires City Government',
     role: 'Frontend Developer',
     period: 'May 2016 – Jan 2018',
     highlights: [
-      'Built and maintained user-facing web interfaces for internal systems using HTML5, CSS3 (Sass), Bootstrap, and AngularJS',
-      '~20% reduction in reported bugs by automating QA flows with Selenium',
-      'Managed feature delivery in agile teams using Trello and Git across multiple internal products',
+      'Built user-facing web interfaces for internal systems using HTML5, CSS3 (Sass), Bootstrap, AngularJS',
+      'Automated QA workflows with Selenium, reducing reported bugs by ~20%',
+      'Managed feature delivery in agile teams (Trello, Git) across multiple internal products',
     ],
   },
 ] as const;
